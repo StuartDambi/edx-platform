@@ -94,7 +94,7 @@ if theme:
     dirs.insert(0, theme.path / 'templates')
 engine = Engine(dirs=dirs)
 loader = Loader(engine)
-origin = loader.get_template_sources(path)
+origin = loader.get_template_sources(path, dirs)
 source = loader.get_contents(next(origin))
 template_path = origin.name
 %>${source | n, decode.utf8}</%def>
