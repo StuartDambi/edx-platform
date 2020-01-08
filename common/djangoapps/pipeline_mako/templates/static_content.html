@@ -93,7 +93,10 @@ if theme:
     dirs = list(dirs)
     dirs.insert(0, theme.path / 'templates')
 engine = Engine(dirs=dirs)
-source, template_path = Loader(engine).load_template_source(path)
+loader = Loader(engine)
+origin = loader.get_template_sources(path)
+source = loader.get_contents(origin)
+template_path = origin.name
 %>${source | n, decode.utf8}</%def>
 
 <%def name="studiofrontend(entry)">
